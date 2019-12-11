@@ -5,7 +5,7 @@
 - https://learn.hashicorp.com/terraform/getting-started/build
 - https://www.terraform.io/docs/configuration/index.html
 
-## Configration
+## Overview
 
 ### Key factors
 
@@ -39,9 +39,9 @@ resource "aws_vpc" "main" {
 - CLIは設定シンタックスを理解し、`providers`プラグインに仕事を任せる
 - resourcesはprovidersに依存しているが同じシンタックスで設定をかける
 
-### Resource
+## Resource
 
-#### Resource Syntax
+### Resource Syntax
 
 resource リソースタイプ　ローカル名
 
@@ -54,42 +54,42 @@ resource "aws_instance" "web" {
 
 - ローカル名は同一モジュール内で参照可（スコープで閉じられている）
 
-#### Resource Types and Arguments
+### Resource Types and Arguments
 
 - Resource blockのbodyに引数を記載
 - 全リソースで共有される`メタ属性`がある
   - https://www.terraform.io/docs/configuration/resources.html#meta-arguments
 
-#### Documentation for Resource Types
+### Documentation for Resource Types
 
 基本的シンタックス習得後は各Providerのドキュメントを参照
 https://www.terraform.io/docs/providers/index.html
 
-#### Resource Behavior
+### Resource Behavior
 
 - resource blockで定義されたリソースは、実際に生成されたリソース際それを特定するためのIDを`state`に格納する
 - IDはリソースの作成、更新、削除に使用される
 - Terraformは生成されたリソースの設定と設定ファイルの設定（属性値）を比較し必要であれば更新する
 - 作成、更新、削除の意味はそれぞれのリソースによって異なる
 
-#### Resource Dependencies
+### Resource Dependencies
 
 - ほとんどのリソース依存関係は自動的に処理される
 - 依存関係がないリソースは並列処理される
 - Terraformが解析できない暗黙の依存関係には`depends_on`で明示する（配列で参照名を列挙）
 - `depends_on`は最終手段。なぜ必要なのかコメントする
 
-#### Meta-Arguments
+### Meta-Arguments
 
-##### depends_on
+#### depends_on
 
-##### count
+#### count
 
 - `count = 4` のようにリソースを複数作成できる
 - `conut.index`で個別のインスタンスを参照可能（i.e. aws_instance.server[0]）
 - 式を使用する場合、リソースが作成されるまで参照不可（動的IDなどと同様）
 
-##### for_each
+#### for_each
 
 - countを拡張したようなもの
 - 各インスタンスに引数を渡せる
@@ -108,7 +108,7 @@ resource "azurerm_resource_group" "rg" {
 - a = "b" の場合、`each.key`で"a"が`each.value`で"b"が参照可能
 - set（配列）が与えられた場合は`each.key`と`each.value`は同じ
 
-##### provider
+#### provider
 
 - デフォルトではリソース名のアンダーバーで区切った最初のキーワードをproviderのデフォルトの設定として使用する
   - "google_compute_instance"だったら"google"
@@ -136,19 +136,19 @@ resource "google_compute_instance" "example" {
 }
 ```
 
-##### lifecycle
+#### lifecycle
 
 - デフォルトの作成、更新、削除の処理内容をカスタマイズできる
 - `create_before_destroy`は必須リソースなどで有効
 
-##### provisioner / connection
+#### provisioner / connection
 
 - 作成後起動するための準備（プロビジョン）を必要とするリソースで使用
 
-#### Local-only Resources
+### Local-only Resources
 
 - 認証情報（private keysやTLS certification）も内部リソースとしてstateに保存される
 
-#### Operation Timeouts
+### Operation Timeouts
 
 - いくつかのリソースで利用可
