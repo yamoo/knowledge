@@ -108,7 +108,7 @@ resource "azurerm_resource_group" "rg" {
 - a = "b" の場合、`each.key`で"a"が`each.value`で"b"が参照可能
 - set（配列）が与えられた場合は`each.key`と`each.value`は同じ
 
-#### provider
+##### provider
 
 - デフォルトではリソース名のアンダーバーで区切った最初のキーワードをproviderのデフォルトの設定として使用する
   - "google_compute_instance"だったら"google"
@@ -136,16 +136,19 @@ resource "google_compute_instance" "example" {
 }
 ```
 
-#### lifecycle
+##### lifecycle
 
 - デフォルトの作成、更新、削除の処理内容をカスタマイズできる
 - `create_before_destroy`は必須リソースなどで有効
 
-#### provisioner / connection
+##### provisioner / connection
 
 - 作成後起動するための準備（プロビジョン）を必要とするリソースで使用
 
+#### Local-only Resources
 
+- 認証情報（private keysやTLS certification）も内部リソースとしてstateに保存される
 
+#### Operation Timeouts
 
-
+- いくつかのリソースで利用可
