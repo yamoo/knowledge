@@ -1,5 +1,7 @@
 # AWS
 
+### 要確認
+
 - IGWにEIP割り当てられる？
 
 ## パブリックサブネットとプライベートサブネットの違い
@@ -26,3 +28,7 @@ https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 https://dev.classmethod.jp/cloud/amazon-vpc-elb-nat/
 
 ![image](https://cdn-ssl-devio-img.classmethod.jp/wp-content/uploads/2012/12/elb-vpc-010.png)
+
+## CloudFront + S3 ホスティング
+
+https://docs.aws.amazon.com/ja_jp/AmazonCloudFront/latest/DeveloperGuide/private-content-restricting-access-to-s3.html
