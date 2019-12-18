@@ -1,5 +1,12 @@
 # AWS
 
+- IGWにEIP割り当てられる？
+
+## パブリックサブネットとプライベートサブネットの違い
+
+https://milestone-of-se.nesuke.com/sv-advanced/aws/vpc-architect/
+http://blog.serverworks.co.jp/tech/2013/05/23/vpc_beginner-2/
+
 ## インターネットゲートウェイ(IGW)とNATゲートウェイの違い(NAT GW)
 https://milestone-of-se.nesuke.com/sv-advanced/aws/internet-nat-gateway/
 
