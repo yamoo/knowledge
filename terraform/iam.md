@@ -5,7 +5,7 @@
 
 [Assume roleの正体](https://dev.classmethod.jp/articles/iam-role-and-assumerole/)
 
-```js
+```terraform
 data "aws_iam_policy_document" "ecs_assume_role" {
   statement {
     effect = "Allow"
@@ -22,7 +22,7 @@ data "aws_iam_policy_document" "ecs_assume_role" {
 
 ## Policy document
 
-```js
+```terraform
 data "aws_iam_policy_document" "ecs" {
   version = "2012-10-17"
   statement {
@@ -41,7 +41,7 @@ data "aws_iam_policy_document" "ecs" {
 
 ## Policy (attach policy document)
 
-```js
+```terraform
 resource "aws_iam_policy" "ecs" {
   name   = "ecs-policy"
   policy = data.aws_iam_policy_document.ecs.json
@@ -50,7 +50,7 @@ resource "aws_iam_policy" "ecs" {
 
 ## Role
 
-```js
+```terraform
 resource "aws_iam_role" "ecs" {
   name               = "ecs-role"
   assume_role_policy = data.aws_iam_policy_document.ecs_assume_role.json
@@ -60,7 +60,7 @@ resource "aws_iam_role" "ecs" {
 
 ## Atttach policy to role
 
-```js
+```terraform
 resource "aws_iam_role_policy_attachment" "ecs" {
   role       = aws_iam_role.ecs.name
   policy_arn = aws_iam_policy.ecs.arn
