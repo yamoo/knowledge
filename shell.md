@@ -1,0 +1,2 @@
+- [prezto](https://github.com/sorin-ionescu/prezto)
+- [powerlevel9k](https://github.com/Powerlevel9k/powerlevel9k)
