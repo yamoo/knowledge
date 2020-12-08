@@ -1,3 +1,3 @@
 - [prezto](https://github.com/sorin-ionescu/prezto)
-- [powerlevel9k](https://github.com/Powerlevel9k/powerlevel9k)
+- [powerlevel10k]https://github.com/romkatv/powerlevel10k)
 - [SourceCodePro](https://github.com/powerline/fonts/tree/master/SourceCodePro)
