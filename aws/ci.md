@@ -1,3 +1,54 @@
+## IAM role for ECR push
+
+https://github.com/aws-actions/amazon-ecs-render-task-definition
+
+```json
+```
+
 ## IAM role for ECS deployment
 
-https://docs.aws.amazon.com/AmazonECS/latest/developerguide/codedeploy_IAM_role.html
+https://github.com/aws-actions/amazon-ecs-deploy-task-definition
+
+```json
+{
+   "Version":"2012-10-17",
+   "Statement":[
+      {
+         "Sid":"RegisterTaskDefinition",
+         "Effect":"Allow",
+         "Action":[
+            "ecs:RegisterTaskDefinition"
+         ],
+         "Resource":"*"
+      },
+      {
+         "Sid":"PassRolesInTaskDefinition",
+         "Effect":"Allow",
+         "Action":[
+            "iam:PassRole"
+         ],
+         "Resource":[
+            "arn:aws:iam::<aws_account_id>:role/<task_definition_task_role_name>",
+            "arn:aws:iam::<aws_account_id>:role/<task_definition_task_execution_role_name>"
+         ]
+      },
+      {
+         "Sid":"DeployService",
+         "Effect":"Allow",
+         "Action":[
+            "ecs:UpdateService",
+            "ecs:DescribeServices"
+         ],
+         "Resource":[
+            "arn:aws:ecs:<region>:<aws_account_id>:service/<cluster_name>/<service_name>"
+         ]
+      }
+   ]
+}
+```
+
+## IAM role for S3 deployment
+
+```json
+```
+
